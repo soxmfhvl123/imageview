@@ -157,8 +157,14 @@ body {
     display: flex;
     gap: 20px;
     width: max-content;
-    animation: marquee 60s linear infinite; /* Standardized comfortable speed */
     align-items: center;
+    cursor: grab;
+    user-select: none;
+    will-change: transform;
+}
+
+.marquee-track:active {
+    cursor: grabbing;
 }
 
 .marquee-track img, 
@@ -168,16 +174,13 @@ body {
     object-fit: contain;
     background: var(--marquee-bg);
     transition: background-color 0.5s var(--ease);
+    pointer-events: none; /* Prevents native drag/context menu on images */
 }
 
 .marquee-track.marquee-cuz {
     animation-duration: 90s; /* Adjusted for higher item count to match visual speed */
 }
 
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
 
 /* Theme Toggle */
 .theme-toggle {
